@@ -15,3 +15,11 @@ const criarItem = (tarefa, status, indice) => {
     `;
     document.getElementById('todoList').appendChild(item);
 }
+
+//limpar tabela 
+const limparTarefas = () => {
+    const todoList = document.getElementById('todoList');
+    while (todoList.firstChild) {
+        todoList.removeChild(todoList.lastChild);
+    }
+}
