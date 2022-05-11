@@ -50,3 +50,27 @@ const removerItem = (indice) => {
     setBanco(banco);
     atualizarTela();
 }
+// Actualizar iten e mandar para o banco 
+const atualizarItem = (indice) => {
+    const banco = getBanco();
+    banco[indice].status = banco[indice].status === '' ? 'checked' : '';
+    setBanco(banco);
+    atualizarTela();
+}
+
+const clickItem = (evento) => {
+    const elemento = evento.target;
+    console.log (elemento.type);
+    if (elemento.type === 'button') {
+        const indice = elemento.dataset.indice;
+        removerItem (indice);
+    }else if (elemento.type === 'checkbox') {
+        const indice = elemento.dataset.indice;
+        atualizarItem (indice);
+    }
+}
+
+document.getElementById('newItem').addEventListener('keypress', inserirItem);
+document.getElementById('todoList').addEventListener('click', clickItem);
+
+atualizarTela();
